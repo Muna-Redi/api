@@ -3,6 +3,7 @@
 
 from flask import Flask, jsonify, request, abort
 from datetime import date, datetime
+import json
 
 
 app = Flask(__name__)
@@ -37,6 +38,6 @@ def api_endpoint():
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-    return jsonify(my_info)
+    return json.dumps(my_info)
 if __name__ == "__main__":
     app.run()
