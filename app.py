@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 """ simple Api script """
 
-from flask import Flask, request, jsonify, abort
+from flask import Flask, jsonify, request, abort
 from datetime import date, datetime
 
 
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
-time = "%Y-%m-%dT%H:%M:%S.%f"
 week_days = {
         "0" : "Monday",
         "1" : "Tuesday",
@@ -39,7 +37,6 @@ def api_endpoint():
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-    print(my_info)
     return jsonify(my_info)
 if __name__ == "__main__":
     app.run()
