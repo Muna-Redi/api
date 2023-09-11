@@ -3,6 +3,7 @@
 
 from flask import Flask, request, jsonify, abort
 from datetime import date, datetime
+from collections import OderedDict
 
 
 app = Flask(__name__)
@@ -26,10 +27,11 @@ def api_endpoint():
     slack_name = request.args['slack_name']
     track = request.args['track']
 
+    my_info = OderedDict()
     my_info = {
             "slack_name": "Munachyme",
             "current_day": week_days[str(date.today().weekday())],
-            "utc_time": str(datetime.now()),
+            "utc_time": str(datetime.now().isoformat + 'Z'),
             "track": "backend",
             "github_file_url": file_url,
             "github_repo_url": repo_url,
@@ -37,7 +39,6 @@ def api_endpoint():
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-    print(my_info)
     return jsonify(my_info)
 if __name__ == "__main__":
     app.run()
