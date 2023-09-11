@@ -20,7 +20,7 @@ week_days = {
         }
 
 
-@app.route('/<slack_name>/<track>', methods=["GET"])
+@app.route('/api', methods=["GET"])
 def api_endpoint(slack_name, track):
     """ returns a json """
     repo_url = "https://github.com/Muna-Redi/api.git"
