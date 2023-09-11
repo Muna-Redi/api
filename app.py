@@ -9,7 +9,7 @@ import json
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
-time = "%Y-%m-%dT%H:%M:%S.%f"
+time = "%Y-%m-%dT%H:%M:%S"
 week_days = {
         "0" : "Monday",
         "1" : "Tuesday",
