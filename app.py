@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """ simple Api script """
 
 from flask import Flask, jsonify, abort
@@ -23,13 +22,15 @@ week_days = {
 @app.route('/<slack_name>/<track>', methods=["GET"])
 def api_endpoint(slack_name, track):
     """ returns a json """
+    repo_url = "https://github.com/Muna-Redi/api.git"
+    file_url = "https://github.com/Muna-Redi/api/blob/main/app.py"
     my_info = {
             "slack_name": "Munachyme",
             "current_day": week_days[str(date.today().weekday())],
             "utc_time": str(datetime.now().strftime(time)),
             "track": "backend",
-            "github_file_url":
-            "github_repo_url":
+            "github_file_url": file_url,
+            "github_repo_url": repo_url,
             "status_code": 200
             }
     if slack_name != "Munachyme" or track != "backend":
@@ -37,4 +38,4 @@ def api_endpoint(slack_name, track):
 
     return jsonify(my_info)
 if _name_ == "__main__":
-    app.run(port=5000)
+    app.run()
