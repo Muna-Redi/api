@@ -7,6 +7,7 @@ import json
 
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 week_days = {
         "0" : "Monday",
@@ -38,6 +39,6 @@ def api_endpoint():
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-    return json.dumps(my_info)
+    return jsonify(json.dumps(my_info))
 if __name__ == "__main__":
     app.run()
