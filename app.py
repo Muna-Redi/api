@@ -31,7 +31,7 @@ def api_endpoint():
     my_info = {
             "slack_name": "Munachyme",
             "current_day": week_days[str(date.today().weekday())],
-            "utc_time": str(datetime.now().isoformat()) + "Z",
+            "utc_time": str(datetime.utcnow()) + "Z",
             "track": "backend",
             "github_file_url": file_url,
             "github_repo_url": repo_url,
