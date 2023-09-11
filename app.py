@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """ simple Api script """
 
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, abort
 from datetime import date, datetime
-from collections import OderedDict
+import json
 
 
 app = Flask(__name__)
@@ -27,7 +27,6 @@ def api_endpoint():
     slack_name = request.args['slack_name']
     track = request.args['track']
 
-    my_info = OderedDict()
     my_info = {
             "slack_name": "Munachyme",
             "current_day": week_days[str(date.today().weekday())],
@@ -39,6 +38,7 @@ def api_endpoint():
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-    return jsonify(my_info)
+    json_string = json.dumps(my_info)
+    return (json_string)
 if __name__ == "__main__":
     app.run()
