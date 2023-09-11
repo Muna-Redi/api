@@ -39,6 +39,6 @@ def api_endpoint():
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-    return jsonify(json.dumps(my_info))
+    return jsonify(my_info)
 if __name__ == "__main__":
     app.run()
