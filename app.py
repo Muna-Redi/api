@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ simple Api script """
 
 from flask import Flask, jsonify, abort
@@ -35,7 +36,7 @@ def api_endpoint(slack_name, track):
             }
     if slack_name != "Munachyme" or track != "backend":
         return abort(404)
-
+    print(my_info)
     return jsonify(my_info)
-if _name_ == "__main__":
+if __name__ == "__main__":
     app.run()
