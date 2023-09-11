@@ -6,9 +6,7 @@ from datetime import date, datetime
 
 
 app = Flask(__name__)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
-time = "%Y-%m-%dT%H:%M:%S.%f"
 week_days = {
         "0" : "Monday",
         "1" : "Tuesday",
@@ -31,7 +29,7 @@ def api_endpoint():
     my_info = {
             "slack_name": "Munachyme",
             "current_day": week_days[str(date.today().weekday())],
-            "utc_time": str(datetime.now().strftime(time)),
+            "utc_time": str(datetime.now()),
             "track": "backend",
             "github_file_url": file_url,
             "github_repo_url": repo_url,
