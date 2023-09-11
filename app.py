@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ simple Api script """
 
-from flask import Flask, jsonify, abort
+from flask import Flask, request, jsonify, abort
 from datetime import date, datetime
 
 
@@ -21,10 +21,13 @@ week_days = {
 
 
 @app.route('/api', methods=["GET"])
-def api_endpoint(slack_name, track):
+def api_endpoint():
     """ returns a json """
     repo_url = "https://github.com/Muna-Redi/api.git"
     file_url = "https://github.com/Muna-Redi/api/blob/main/app.py"
+    slack_name = request.args['slack_name']
+    track = request.args['track']
+
     my_info = {
             "slack_name": "Munachyme",
             "current_day": week_days[str(date.today().weekday())],
